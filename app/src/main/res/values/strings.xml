@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TBusche_Calculator</string>
+    <string name="backSp_desc">Backspace button</string>
 </resources>

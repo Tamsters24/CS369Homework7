@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +31,6 @@ class MainActivity : AppCompatActivity() {
             R.id.button8 -> displayNumber += "8"
             R.id.button9 -> displayNumber += "9"
             R.id.button0 -> displayNumber += "0"
-            R.id.delete_button -> {
-                if (displayNumber.length > 1) {
-                    displayNumber = displayNumber.subSequence(0, displayNumber.length - 1) as String
-                }
-                else
-                    displayNumber = "0"
-            }
             R.id.decimal_button -> {
                 if (displayNumber.contains(".")) { /* do nothing */ }
                 else if (displayNumber == "")
@@ -52,6 +46,16 @@ class MainActivity : AppCompatActivity() {
                         "-$displayNumber"
             }
         }
+        calcDisplay.setText(displayNumber)
+    }
+
+    fun delete(view: View) {
+        val calcDisplay = findViewById<EditText>(R.id.calculator_display)
+        var displayNumber = calcDisplay.text.toString()
+        if (displayNumber.length > 1)
+            displayNumber = displayNumber.subSequence(0, displayNumber.length - 1) as String
+        else
+            displayNumber = "0"
         calcDisplay.setText(displayNumber)
     }
 }

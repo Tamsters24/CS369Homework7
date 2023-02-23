@@ -50,15 +50,14 @@
                     app:backgroundTint="@color/operator_buttons"
                     android:text="/"
                     android:textColor="@color/white"/>
-            <Button
+            <ImageButton
                     android:id="@+id/delete_button"
-                    android:layout_width="@dimen/button_width"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
-                    android:layout_marginEnd="2pt"
-                    android:layout_weight="1"
-                    android:text="Back"
+                    android:layout_weight="1.05"
+                    app:srcCompat="@drawable/backspace"
                     app:backgroundTint="@color/operator_buttons"
-                    android:onClick="concatNumber"/>
+                    android:onClick="delete"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <Button
