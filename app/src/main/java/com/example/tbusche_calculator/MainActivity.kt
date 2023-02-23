@@ -15,8 +15,10 @@ class MainActivity : AppCompatActivity() {
     fun concatNumber(view: View) {
         val calcDisplay = findViewById<EditText>(R.id.calculator_display)
         var displayNumber = calcDisplay.text.toString()
-        val numberbtn = view as Button
-        when (numberbtn.id) {
+        val numberBtn = view as Button
+        if (displayNumber == "0")
+            displayNumber = ""
+        when (numberBtn.id) {
             R.id.button1 -> displayNumber += "1"
             R.id.button2 -> displayNumber += "2"
             R.id.button3 -> displayNumber += "3"
@@ -31,6 +33,13 @@ class MainActivity : AppCompatActivity() {
                 if (displayNumber.contains(".")) { /* do nothing */ }
                 else
                     displayNumber += "."
+            }
+            R.id.pos_neg_button -> {
+                displayNumber =
+                    if (displayNumber[0] == '-')
+                        displayNumber.drop(1)   // Odd. It doesn't work as intended for n = 0
+                    else
+                        "-$displayNumber"
             }
         }
         calcDisplay.setText(displayNumber)

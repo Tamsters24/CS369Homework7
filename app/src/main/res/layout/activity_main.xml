@@ -16,7 +16,7 @@
             android:background="@color/result_screen"
             android:textSize="40pt"
             android:gravity="end|center_vertical"
-            android:text=""/>
+            android:text="0"/>
     <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -191,7 +191,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/purple_500"
                     android:text="+/-"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="concatNumber"/>
             <Button
                     android:id="@+id/button0"
                     android:layout_width="@dimen/button_width"
