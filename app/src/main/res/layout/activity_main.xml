@@ -66,7 +66,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/purple_500"
                     android:text="7"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="concatNumber"/>
             <Button
                     android:id="@+id/button8"
                     android:layout_width="@dimen/button_width"
@@ -75,7 +76,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/purple_500"
                     android:text="8"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="concatNumber"/>
             <Button
                     android:id="@+id/button9"
                     android:layout_width="@dimen/button_width"
@@ -84,7 +86,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/purple_500"
                     android:text="9"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="concatNumber"/>
             <Button
                     android:id="@+id/multiply_button"
                     android:layout_width="@dimen/button_width"
