@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         if (displayNumber == "0")
             displayNumber = ""
         when (numberBtn.id) {
+            R.id.clear_button -> displayNumber = "0"
             R.id.button1 -> displayNumber += "1"
             R.id.button2 -> displayNumber += "2"
             R.id.button3 -> displayNumber += "3"
@@ -29,8 +30,17 @@ class MainActivity : AppCompatActivity() {
             R.id.button8 -> displayNumber += "8"
             R.id.button9 -> displayNumber += "9"
             R.id.button0 -> displayNumber += "0"
+            R.id.delete_button -> {
+                if (displayNumber.length > 1) {
+                    displayNumber = displayNumber.subSequence(0, displayNumber.length - 1) as String
+                }
+                else
+                    displayNumber = "0"
+            }
             R.id.decimal_button -> {
                 if (displayNumber.contains(".")) { /* do nothing */ }
+                else if (displayNumber == "")
+                    displayNumber = "0."
                 else
                     displayNumber += "."
             }
