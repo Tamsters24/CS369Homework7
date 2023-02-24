@@ -9,10 +9,19 @@
         android:padding="5dp" android:orientation="vertical">
 
     <EditText
-            android:id="@+id/calculator_display"
+            android:id="@+id/calc_display_top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.20"
+            android:background="@color/result_screen"
+            android:textSize="20pt"
+            android:gravity="end|center_vertical"
+            android:text=""/>
+    <EditText
+            android:id="@+id/calc_display_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.80"
             android:background="@color/result_screen"
             android:textSize="40pt"
             android:gravity="end|center_vertical"
@@ -31,7 +40,7 @@
                     app:backgroundTint="@color/operator_buttons"
                     android:text="C"
                     android:textColor="@color/white"
-                    android:onClick="concatNumber"/>
+                    android:onClick="clear"/>
             <Button
                     android:id="@+id/percent_button"
                     android:layout_width="@dimen/button_width"
@@ -40,7 +49,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="%"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="numberOperation"/>
             <Button
                     android:id="@+id/divide_button"
                     android:layout_width="@dimen/button_width"
@@ -49,7 +59,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="/"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="numberOperation"/>
             <ImageButton
                     android:id="@+id/delete_button"
                     android:layout_width="0dp"
@@ -98,7 +109,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="*"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="numberOperation"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <Button
@@ -139,7 +151,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="-"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="numberOperation"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <Button
@@ -180,7 +193,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="+"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="numberOperation"/>
         </TableRow>
         <TableRow
                 android:layout_width="match_parent"
