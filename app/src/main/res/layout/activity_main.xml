@@ -23,7 +23,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.80"
             android:background="@color/result_screen"
-            android:textSize="40pt"
+            android:textSize="36pt"
             android:gravity="end|center_vertical"
             android:text="0"/>
     <TableLayout
@@ -50,7 +50,7 @@
                     app:backgroundTint="@color/operator_buttons"
                     android:text="%"
                     android:textColor="@color/white"
-                    android:onClick="numberOperation"/>
+                    />
             <Button
                     android:id="@+id/divide_button"
                     android:layout_width="@dimen/button_width"
@@ -237,7 +237,8 @@
                     android:layout_weight="1"
                     app:backgroundTint="@color/operator_buttons"
                     android:text="="
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:onClick="equalsFunction"/>
         </TableRow>
     </TableLayout>
 </LinearLayout>
