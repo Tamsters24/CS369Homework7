@@ -7,9 +7,10 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    private var operands = arrayListOf<String>()
-    private var operators = arrayListOf<String>()
     private var storedExpression = ""
+    private var operand1: Double = 0.0
+    private var operand2: Double = 0.0
+    private var operator: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
     fun clear(view: View) {                                                 /* Resets display to initial display */
         val displayTop = findViewById<EditText>(R.id.calc_display_top)
         val displayBottom = findViewById<EditText>(R.id.calc_display_bottom)
+        storedExpression = ""
         displayTop.setText("")
         displayBottom.setText("0")
     }
@@ -76,35 +78,65 @@ class MainActivity : AppCompatActivity() {
          * the operand for the final calculation. 3) concatenate the stored
          * expression with values and operator symbols. 4) Update the top display
          * with the stored expression. 5) Refresh the bottom display. */
-        val currentDisplay = findViewById<EditText>(R.id.calc_display_bottom)
         val storedDisplay = findViewById<EditText>(R.id.calc_display_top)
-        storedExpression += currentDisplay.text.toString()
-        operands.add(storedExpression)   // Step 1
-
+        val currentDisplay = findViewById<EditText>(R.id.calc_display_bottom)
+        val previousExpression = storedDisplay.text.toString()
+        val currentExpression = currentDisplay.text.toString()
         val operatorBtn = view as Button
-        when (operatorBtn.id) {
-            R.id.percent_button -> {
-                storedExpression += " % "
-                operators.add("%")
+
+        if (isNumeric(currentExpression)) {
+            /* If there is no operand1 yet, assign it and store it and the
+             * operator in the top display. Otherwise, calculate the current
+             * operands, and place result and new operator in the stored display
+             * (until "equals" is executed) */
+            if (previousExpression == "") {
+                operand1 = currentExpression.toDouble()
+                storedExpression += currentExpression
+            } else if (isNumeric(currentExpression)) {
+                operand2 = currentExpression.toDouble()
+                storedExpression = calculate(operand1, operand2, operator)
+                operand1 = storedExpression.toDouble()
             }
-            R.id.divide_button -> {
-                storedExpression += " / "
-                operators.add("/")
+
+            when (operatorBtn.id) {
+                R.id.percent_button -> {
+                    storedExpression += " %"
+                    operator = "%"
+                }
+                R.id.divide_button -> {
+                    storedExpression += " /"
+                    operator = "/"
+                }
+                R.id.multiply_button -> {
+                    storedExpression += " *"
+                    operator = "*"
+                }
+                R.id.subtract_button -> {
+                    storedExpression += " - "
+                    operator = "-"
+                }
+                R.id.addition_button -> {
+                    storedExpression += " + "
+                    operator = "+"
+                }
             }
-            R.id.multiply_button -> {
-                storedExpression += " * "
-                operators.add("*")
-            }
-            R.id.subtract_button -> {
-                storedExpression += " - "
-                operators.add("-")
-            }
-            R.id.addition_button -> {
-                storedExpression += " + "
-                operators.add("+")
-            }
+            storedDisplay.setText(storedExpression)
+            currentDisplay.setText("")
         }
-        storedDisplay.setText(storedExpression)
-        currentDisplay.setText("")
+    }
+
+    private fun isNumeric(string: String): Boolean {
+        return string.toDoubleOrNull() != null
+    }
+
+    private fun calculate(operand1: Double, operand2: Double, operator:String): String {
+        var result = ""
+        when (operator) {
+            "/" -> result = (operand1 / operand2).toString()
+            "*" -> result = (operand1 * operand2).toString()
+            "-" -> result = (operand1 - operand2).toString()
+            "+" -> result = (operand1 + operand2).toString()
+        }
+        return result
     }
 }

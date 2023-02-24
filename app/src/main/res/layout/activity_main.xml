@@ -14,7 +14,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.20"
             android:background="@color/result_screen"
-            android:textSize="20pt"
+            android:textSize="15pt"
             android:gravity="end|center_vertical"
             android:text=""/>
     <EditText
