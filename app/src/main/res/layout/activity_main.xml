@@ -14,7 +14,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.20"
             android:background="@color/result_screen"
-            android:textSize="15pt"
+            android:textSize="13pt"
             android:gravity="end|center_vertical"
             android:text=""/>
     <EditText
@@ -50,7 +50,7 @@
                     app:backgroundTint="@color/operator_buttons"
                     android:text="%"
                     android:textColor="@color/white"
-                    />
+                    android:onClick="percent"/>
             <Button
                     android:id="@+id/divide_button"
                     android:layout_width="@dimen/button_width"

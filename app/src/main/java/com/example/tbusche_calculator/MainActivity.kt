@@ -55,11 +55,15 @@ class MainActivity : AppCompatActivity() {
                     displayNumber += "."
             }
             R.id.pos_neg_button -> {    /* Switch between negative and positive */
-                displayNumber =
+                displayNumber = if (displayNumber == "") {
+                    /* Set the bottom display to "0" */
+                    "0"
+                } else {
                     if (displayNumber[0] == '-')
                         displayNumber.drop(1)   // Odd. It doesn't work with n = 0
                     else
                         "-$displayNumber"
+                }
             }
         }
         displayBottom.setText(displayNumber)
@@ -200,6 +204,22 @@ class MainActivity : AppCompatActivity() {
         }
         operand1 = result.toFloat()
         return result
+    }
+
+    fun percent(view: View) {
+        /* Percent will take the current display value (bottom display) and
+         * then display that number with a percent symbol in the top display.
+         * The bottom display will be updated with the result for that value
+         * divided by 100. The percent result will be set to operand1 */
+        val displayTop: EditText = findViewById(R.id.calc_display_top)
+        val displayBottom: EditText = findViewById(R.id.calc_display_bottom)
+        val bottomNumber = displayBottom.text.toString()
+        val topNumber = "$bottomNumber%"
+        displayTop.setText(topNumber)
+        var numberValue = bottomNumber.toFloat()
+        numberValue /= 100
+        displayBottom.setText(numberValue.toString())
+        operand1 = numberValue
     }
 
     fun clear(view: View) {                                         /* Resets all values and initializes display */
